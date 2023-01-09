@@ -15,9 +15,13 @@
     const alphabet = [...Array(26)].map((ele,i) => ele = String.fromCharCode(i+97)) 
     const inputs = [...Array(randomWord.length).fill(' _ ')]
     const letterGrid = document.getElementById('letter-grid')
-    let score = 0
-    let lives = 5
+    const pictures = [...Array(7)].map((ele,i) => ele = './images/hangman'+ i + '.jpg')
 
+    console.log(pictures)
+    let score = 0
+    let lives = 0
+
+    
     alphabet.forEach(ele => {
         letterGrid.innerHTML +=`<button class="letter">${ele}</button>`
     }) 
@@ -28,12 +32,10 @@
     }) 
 
     
-        
     alphabet.forEach((ele, i) => {
-        
-            
+                    
         document.getElementsByClassName("letter")[i].addEventListener("click", (event) => {
-            if(inputs.some(input => input === ' _ ' )){
+            if(inputs.some(input => input === ' _ ' ) ){
                 inputs.forEach(ele => {
                     hiddenWord.innerHTML =``
                 }) 
@@ -52,10 +54,12 @@
                 }  
                 else {
                     document.getElementsByClassName("letter")[i].style.backgroundColor="red" 
-                    console.log(lives--)
+                    document.getElementById('image').innerHTML = `<img src = ${pictures[lives]}> </img>` 
+                    lives++
+                    
                 }                    
                 inputs.some(input => input === ' _ ' ) ? 0: alert("victory")
-            } else console.log("all letters have been found")
+            } else console.log("the game is finished")
         }) 
    
 
