@@ -61,7 +61,7 @@
                 (inputs.some(input => input === ' _ ' )) ? 0: document.getElementById('hidden-word').innerHTML += `<p>Victory</p>`
                 lives >= 7 ? document.getElementById('image').innerHTML += `<p>Game over, You Lost</p>`:0
 
-            } else alert("the game is finished")
+            } else alert("the game is finished, press 'F5' to restart")
         }) 
     })
    console.log("random word: ", randomWord)
